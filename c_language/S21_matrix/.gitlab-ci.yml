@@ -1,0 +1,44 @@
+stages:
+  - build_matrix
+  - build_test
+  - styles
+  - build_gcov_report
+
+build_matrix:
+  stage: build_matrix
+  script:
+    - cd src/
+    - make s21_matrix.a
+  artifacts:
+    paths:
+      - src/
+    expire_in: 30 days
+
+build_test:
+  stage: build_test
+  script:
+    - cd src/
+    - make test
+  artifacts:
+    paths:
+      - src/
+    expire_in: 30 days
+
+styles:
+  stage: styles
+  script:
+    - cp -r materials/linters/.clang-format src/
+    - cd src/
+    - clang-format -n *.c *.h
+    - clang-format -i *.c *.h
+    - git diff --exit-code
+
+build_gcov_report:
+  stage: build_gcov_report
+  script:
+    - cd src/
+    - make gcov_report
+  artifacts:
+    paths:
+      - src/
+    expire_in: 30 days

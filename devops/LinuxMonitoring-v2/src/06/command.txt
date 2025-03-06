@@ -1,0 +1,5 @@
+Все записи, отсортированные по коду ответа - goaccess -f /путь/*.log --log-format=COMBINED -a
+Все уникальные IP, встречающиеся в записях - goaccess -f /путь/*.log  --log-format=COMBINED -a -c
+Все запросы с ошибками (код ответа - 4хх или 5хх) - goaccess -f /путь/*.log  --log-format=COMBINED -a --log-flags=NO404...
+Все уникальные IP, которые встречаются среди ошибочных запросов - goaccess -f /путь/*.log  --log-format=COMBINED -a --log-flags=NO404... --output-format=COMBINED -c
+

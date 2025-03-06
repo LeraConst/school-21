@@ -1,0 +1,68 @@
+stages:
+  - build
+  - styles
+  - test
+  - deploy
+  - bot_succ
+  - bot_fail
+
+build:
+  stage: build
+  script:
+    - cd src/cat
+    - make s21_cat
+    - cd ../grep
+    - make s21_grep
+  artifacts:
+    paths:
+      - src/cat/s21_cat
+      - src/grep/s21_grep
+    expire_in: 30 days
+
+styles:
+  stage: styles
+  script:
+    - cp -r materials/linters/.clang-format src/cat
+    - cp -r materials/linters/.clang-format src/grep
+    - cd src/cat
+    - clang-format -n *.c *.h
+    - clang-format -i *.c *.h
+    - git diff --exit-code
+    - cd ../grep
+    - clang-format -n *.c *.h
+    - clang-format -i *.c *.h
+    - git diff --exit-code
+
+test:
+  stage: test
+  script:
+    - cd src/cat/test/
+    - bash test_func_cat.sh
+    - if [ $? -ne 0 ]; then exit 1; fi
+    - cd ../../grep/
+    - bash test_func_grep.sh
+    - if [ $? -ne 0 ]; then exit 1; fi
+  when: on_success
+
+deploy:
+  stage: deploy
+  script:
+    - whoami
+    - cd src/
+    - bash script.sh
+    - if [ $? -ne 0 ]; then exit 1; fi
+  when: manual
+
+bot_succ:
+  stage: bot_succ
+  script:
+    - bash src/bot.sh
+    - sh src/bot.sh Success
+  when: on_success
+
+bot_fail:
+  stage: bot_fail
+  script:
+    - bash src/bot.sh
+    - sh src/bot.sh Fail
+  when: on_failure

@@ -1,0 +1,23 @@
+# output.sh
+
+echo -e $L_txt_clr$L_bckgrnd_clr"HOSTNAME        $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_hostname)$Reset_clr"
+echo -e $L_txt_clr$L_bckgrnd_clr"TIMEZONE        $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_timezone)$Reset_clr"
+echo -e $L_txt_clr$L_bckgrnd_clr"USER            $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_user)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"OS              $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_os_info)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"DATE            $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_date)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"UPTIME          $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_uptime)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"UPTIME_SEC      $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_uptime_sec)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"IP              $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_ip)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"MASK            $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_mask)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"GATEWAY         $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_gateway)$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"RAM_TOTAL       $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_ram_total) GB$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"RAM_USED        $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_ram_used) GB$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"RAM_FREE        $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_ram_free) GB$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"SPACE_ROOT      $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_space_root) MB$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"SPACE_ROOT_USED $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_space_root_used) MB$Reset_clr"                
+echo -e $L_txt_clr$L_bckgrnd_clr"SPACE_ROOT_FREE $Reset_clr=$R_txt_clr$R_bckgrnd_clr $(get_space_root_free) MB$Reset_clr"                                  
+echo                
+echo "Column 1 background = $column1_background ($L_bckgrnd_txt)"                
+echo "Column 1 font color = $column1_font_color ($L_txt_txt)"                
+echo "Column 2 background = $column2_background ($R_bckgrnd_txt)"                
+echo "Column 2 font color = $column2_font_color ($R_txt_txt)"
